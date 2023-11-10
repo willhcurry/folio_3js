@@ -1,8 +1,14 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+import App from './App.js';
 
 export default class Camera {
     constructor() {
-        this.setInstance()
+        this.app = new App();
+        this.canvas = this.app.canvas;
+        this.setInstance();
+        this.setControls();
     };
 
     setInstance() {
@@ -16,4 +22,14 @@ export default class Camera {
 
         this.instance.position.z = 5; 
     };
+
+    setControls() {
+        this.controls = new OrbitControls(camera, canvas);
+        controls.enableDamping = true;
+    };
+
+    setControls() {
+        this.controls = new OrbitControls(this.instance, this.canvas);
+        this.controls.enableDamping = true;
+    }
 };
