@@ -5,16 +5,21 @@ export default class Renderer {
     constructor() {
         this.app = new App();
         this.canvas = this.app.canvas;
-
+        this.camera = this.app.camera;
+        this.scene = this.app.scene;
         this.setInstance();
     };
 
     setInstance() {
-        this.renderer = new THREE.WebGLRenderer({
+        this.instance = new THREE.WebGLRenderer({
             canvas: this.canvas,
             antialias: true,
           });
-          this.renderer.setSize(window.innerWidth, window.innerHeight);
-          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          this.instance.setSize(window.innerWidth, window.innerHeight);
+          this.instance.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    };
+
+    loop() {
+        this.instance.render(this.scene, this.camera.instance);
     };
 };

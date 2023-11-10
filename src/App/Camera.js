@@ -24,12 +24,12 @@ export default class Camera {
     };
 
     setControls() {
-        this.controls = new OrbitControls(camera, canvas);
-        controls.enableDamping = true;
-    };
-
-    setControls() {
         this.controls = new OrbitControls(this.instance, this.canvas);
         this.controls.enableDamping = true;
-    }
+    };
+
+    loop() {
+        this.controls.update();
+        console.log('controls are updating');
+    };
 };
