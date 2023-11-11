@@ -26,8 +26,8 @@ export default class Renderer {
 
     setResizeListener() {
         this.sizesStore.subscribe(() => {
-            this.instance.setSize(sizes.width, sizes.height);
-            this.instance.setPixelRatio(sizes.pixelRatio);
+            this.instance.setSize(this.sizes.width, this.sizes.height);
+            this.instance.setPixelRatio(this.sizes.pixelRatio);
         });
     };
 

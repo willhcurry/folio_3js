@@ -37,7 +37,7 @@ export default class Camera {
 
     setResizeListener() {
         this.sizesStore.subscribe((sizes) => {
-            this.instance.sizes.width / sizes.height;
+            this.instance.aspect = sizes.width / sizes.height;
             this.instance.updateProjectionMatrix();
         });
     };

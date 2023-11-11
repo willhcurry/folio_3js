@@ -4,10 +4,13 @@ export default class Resize {
     constructor() {
 
         const { setState } = sizesStore;
-        console.log(setState);
 
         window.addEventListener("resize", () => {
-            console.log('resized');
+            setState({
+                width: window.innerWidth,
+                height: window.innerHeight,
+                pixelRatio: Math.min(window.devicePixelRatio, 2)
           });
-    };
+        });
+    }
 }
