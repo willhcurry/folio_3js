@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import App from './App.js';
+import { sizesStore } from './Utils/Store.js';
 
 export default class Renderer {
     constructor() {
@@ -7,7 +8,11 @@ export default class Renderer {
         this.canvas = this.app.canvas;
         this.camera = this.app.camera;
         this.scene = this.app.scene;
+        this.sizesStore = sizesStore;
+        this.sizes = this.sizesStore.getState();
+
         this.setInstance();
+        this.setResizeListener();
     };
 
     setInstance() {
@@ -15,8 +20,15 @@ export default class Renderer {
             canvas: this.canvas,
             antialias: true,
           });
-          this.instance.setSize(window.innerWidth, window.innerHeight);
-          this.instance.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          this.instance.setSize(this.sizes.width, this.sizes.height);
+          this.instance.setPixelRatio(this.sizes.pixelRatio);
+    };
+
+    setResizeListener() {
+        this.sizesStore.subscribe(() => {
+            this.instance.setSize(sizes.width, sizes.height);
+            this.instance.setPixelRatio(sizes.pixelRatio);
+        });
     };
 
     loop() {

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { sizesStore } from './Utils/Store.js';
 
 import App from './App.js';
 
@@ -7,15 +8,21 @@ export default class Camera {
     constructor() {
         this.app = new App();
         this.canvas = this.app.canvas;
+
+        this.sizesStore = sizesStore;
+
+        this.sizes = this.sizesStore.getState();
+
         this.setInstance();
         this.setControls();
+        this.setResizeListener()
     };
 
     setInstance() {
         // initialize the camera
         this.instance = new THREE.PerspectiveCamera(
             35,
-            window.innerWidth / window.innerHeight,
+            this.sizes.width / this.sizes.height,
             0.1,
             200
         );
@@ -26,6 +33,13 @@ export default class Camera {
     setControls() {
         this.controls = new OrbitControls(this.instance, this.canvas);
         this.controls.enableDamping = true;
+    };
+
+    setResizeListener() {
+        this.sizesStore.subscribe((sizes) => {
+            this.instance.sizes.width / sizes.height;
+            this.instance.updateProjectionMatrix();
+        });
     };
 
     loop() {
