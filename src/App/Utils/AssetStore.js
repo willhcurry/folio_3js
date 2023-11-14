@@ -1,4 +1,4 @@
-import { createStore } from 'zustand/vanilla'
+import { createStore } from 'zustand/vanilla';
 
 export const assetsToLoad = [
   {
@@ -21,7 +21,7 @@ export const assetsToLoad = [
     id: 'earth',
     type: 'texture',
   },
-]
+];
 
 const assetStore = createStore((set) => ({
   assetsToLoad,
@@ -33,6 +33,6 @@ const assetStore = createStore((set) => ({
         [id]: asset,
       },
     })),
-}))
+}));
 
 export default assetStore;
