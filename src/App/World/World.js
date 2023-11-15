@@ -16,7 +16,7 @@ export default class World {
     // create world classes
     appStateStore.subscribe((state) => {
       if (state.physicsReady) {
-        console.log('physicsReady')
+        console.log('physicsReady');
         this.environment = new Environment();
       }
     });

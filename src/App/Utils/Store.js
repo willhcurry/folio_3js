@@ -8,5 +8,4 @@ export const sizesStore = createStore(() => ({
 
 export const appStateStore = createStore(() => ({
   physicsReady: false,
-
-}))
+}));
