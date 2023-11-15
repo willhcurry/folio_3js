@@ -24,23 +24,34 @@ export default class Environment {
   }
 
   addMeshes() {
-    const geometry = new THREE.BoxGeometry(4, 4, 4);
+    const group = new THREE.Group();
+    group.position.y = 10;
+    this.scene.add(group);
+
+    const geometry = new THREE.SphereGeometry(5, 32, 32);
     const material = new THREE.MeshStandardMaterial({ color: 'blue' });
     this.cubeMesh = new THREE.Mesh(geometry, material);
     this.cubeMesh.position.y = 10;
     this.cubeMesh.rotation.x = 0.5;
     this.cubeMesh.rotation.z = 0.5;
-    this.cubeMesh.scale.set(5, 5, 5);
-    this.scene.add(this.cubeMesh);
-    this.physics.add(this.cubeMesh);
+    group.add(this.cubeMesh);
+    this.physics.add(this.cubeMesh, 'dynamic', 'ball');
 
     this.cubeMesh2 = new THREE.Mesh(geometry, material);
     this.cubeMesh2.position.y = 10;
-    this.cubeMesh2.position.x = 3;
+    this.cubeMesh2.position.x = 0;
 
     this.cubeMesh2.rotation.x = 0.5;
     this.cubeMesh2.rotation.z = 0.5;
-    this.scene.add(this.cubeMesh2);
-    this.physics.add(this.cubeMesh2);
+    group.add(this.cubeMesh2);
+    this.physics.add(this.cubeMesh2, 'dynamic', 'ball');
+
+    const groundGeometry = new THREE.BoxGeometry(10, 1, 10);
+    const groundMaterial = new THREE.MeshStandardMaterial({
+      color: 'turquoise',
+    });
+    this.groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+    this.scene.add(this.groundMesh);
+    this.physics.add(this.groundMesh, 'fixed', 'cuboid');
   }
 }
