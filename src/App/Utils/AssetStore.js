@@ -8,28 +8,28 @@ export const assetsToLoad = [
   },
   {
     path: './textures/2k_mars.jpg',
-    id: 'earth',
+    id: 'mars',
     type: 'texture',
   },
   {
     path: './textures/2k_mercury.jpg',
-    id: 'earth',
+    id: 'mercury',
     type: 'texture',
   },
   {
     path: './textures/2k_sun.jpg',
-    id: 'earth',
+    id: 'sun',
     type: 'texture',
   },
 ];
 
 const assetStore = createStore((set) => ({
   assetsToLoad,
-  loadAssets: {},
+  loadedAssets: {},
   addLoadedAsset: (asset, id) =>
     set((state) => ({
-      loadAssets: {
-        ...state.loadAssets,
+      loadedAssets: {
+        ...state.loadedAssets,
         [id]: asset,
       },
     })),
