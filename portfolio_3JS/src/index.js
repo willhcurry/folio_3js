@@ -1,4 +1,4 @@
-import './style.css'
-import App from './App/App.js'
+import './style.css';
+import App from './App/App.js';
 
-const app = new App()
+const app = new App();

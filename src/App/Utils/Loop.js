@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import App from '../App.js';
 
 export default class Loop {
@@ -7,12 +8,17 @@ export default class Loop {
     this.renderer = this.app.renderer;
     this.world = this.app.world;
 
+    this.clock = new THREE.Clock();
+    this.previousElapsedTime = 0;
     this.loop();
   }
 
   loop() {
-    this.world.loop();
+    const elapsedTime = this.clock.getElapsedTime();
+    const deltaTime = elapsedTime - this.previousElapsedTime;
+    this.previousElapsedTime = elapsedTime;
 
+    this.world.loop(deltaTime, elapsedTime);
     this.camera.loop();
     this.renderer.loop();
     window.requestAnimationFrame(() => this.loop());
