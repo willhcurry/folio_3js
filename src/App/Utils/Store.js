@@ -11,7 +11,7 @@ export const appStateStore = createStore(() => ({
 }));
 
 export const inputStore = createStore(() => ({
-  forward:false,
+  forward: false,
   backward: false,
   left: false,
   right: false,

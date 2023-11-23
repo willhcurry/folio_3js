@@ -1,6 +1,6 @@
-import * as THREE from "three";
+import * as THREE from 'three';
 
-import App from "../App.js";
+import App from '../App.js';
 
 export default class Environment {
   constructor() {
@@ -28,16 +28,16 @@ export default class Environment {
   addGround() {
     const groundGeometry = new THREE.BoxGeometry(100, 1, 100);
     const groundMaterial = new THREE.MeshStandardMaterial({
-      color: "turquoise",
+      color: 'turquoise',
     });
     this.groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
     this.scene.add(this.groundMesh);
-    this.physics.add(this.groundMesh, "fixed", "cuboid");
+    this.physics.add(this.groundMesh, 'fixed', 'cuboid');
   }
 
   addWalls() {
     const wallMaterial = new THREE.MeshStandardMaterial({
-      color: "lightgreen",
+      color: 'lightgreen',
     });
 
     const wallGeometry = new THREE.BoxGeometry(100, 10, 1);
@@ -59,13 +59,13 @@ export default class Environment {
           position.rotation.z || 0
         );
       this.scene.add(wallMesh);
-      this.physics.add(wallMesh, "fixed", "cuboid");
+      this.physics.add(wallMesh, 'fixed', 'cuboid');
     });
   }
 
   addStairs() {
     const stairMaterial = new THREE.MeshStandardMaterial({
-      color: "orange",
+      color: 'orange',
     });
 
     const stairGeometry = new THREE.BoxGeometry(10, 1, 100);
@@ -82,14 +82,14 @@ export default class Environment {
       const stairMesh = new THREE.Mesh(stairGeometry, stairMaterial);
       stairMesh.position.set(position.x, position.y, position.z);
       this.scene.add(stairMesh);
-      this.physics.add(stairMesh, "fixed", "cuboid");
+      this.physics.add(stairMesh, 'fixed', 'cuboid');
     });
   }
 
   addMeshes() {
     const geometry = new THREE.SphereGeometry(1, 32, 32);
     const material = new THREE.MeshStandardMaterial({
-      color: "blue",
+      color: 'blue',
     });
 
     for (let i = 0; i < 100; i++) {
@@ -106,7 +106,7 @@ export default class Environment {
         Math.random() * Math.PI
       );
       this.scene.add(mesh);
-      this.physics.add(mesh, "dynamic", "ball");
+      this.physics.add(mesh, 'dynamic', 'ball');
     }
   }
 }
