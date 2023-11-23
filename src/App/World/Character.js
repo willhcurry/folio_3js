@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import App from '../App.js';
-
 import { inputStore } from '../Utils/Store.js';
 
 export default class Character {
@@ -27,6 +26,17 @@ export default class Character {
   }
 
   loop() {
-    console.log(this.forward);
+    if (this.forward) {
+      this.character.position.z -= 0.1;
+    }
+    if (this.backward) {
+      this.character.position.z += 0.1;
+    }
+    if (this.left) {
+      this.character.position.x -= 0.1;
+    }
+    if (this.right) {
+      this.character.position.x += 0.1;
+    }
   }
 }

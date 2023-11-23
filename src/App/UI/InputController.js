@@ -12,7 +12,7 @@ export default class InputController {
   }
 
   onKeyDown(event) {
-    if (!this.keyPressed[event.code]) return;
+    if (this.keyPressed[event.code]) return;
 
     switch (event.code) {
       case 'KeyW':
