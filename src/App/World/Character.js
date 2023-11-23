@@ -6,6 +6,7 @@ export default class Character {
   constructor() {
     this.app = new App();
     this.scene = this.app.scene;
+    this.physics = this.app.world.physics;
 
     inputStore.subscribe((state) => {
       this.forward = state.forward;
@@ -23,6 +24,7 @@ export default class Character {
     this.character = new THREE.Mesh(geometry, material);
     this.character.position.set(0, 2.5, 0);
     this.scene.add(this.character);
+    this.physics.add(this.character, "dynamic", "cuboid")
   }
 
   loop() {
