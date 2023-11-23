@@ -45,6 +45,5 @@ export default class Camera {
 
   loop() {
     this.controls.update();
-    console.log('controls are updating');
   }
 }

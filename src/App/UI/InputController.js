@@ -1,11 +1,54 @@
+import { inputStore } from '../Utils/Store';
+
 export default class InputController {
   constructor() {
     this.startListening()
   }
 
   startListening() {
-    window.addEventListener('keydown', (event) => {
-      console.log(event)
-    })
-  }
+    window.addEventListener('keydown', (event) => this.onKeyDown(event))
+    window.addEventListener('keyup', (event) => this.onKeyUp(event))
+    }
+  
+    onKeyDown(event) {
+      switch (event.code) {
+        case 'KeyW':
+        case 'ArrowUp':
+          inputStore.setState({ forward: true})
+          break;
+        case 'KeyA':
+        case 'ArrowLeft':
+          inputStore.setState({ left: true })
+          break;
+        case 'KeyS':
+        case 'ArrowBackward':
+          inputStore.setState({ backward: true })
+          break;
+        case 'KeyD':
+        case 'ArrowRight':
+          inputStore.setState({ right: true })
+          break;
+      }
+    }
+
+    onKeyUp(event) {
+      switch (event.code) {
+        case 'KeyW':
+        case 'ArrowUp':
+          inputStore.setState({ forward: false })
+          break;
+        case 'KeyA':
+        case 'ArrowLeft':
+          inputStore.setState({ left: false })
+          break;
+        case 'KeyS':
+        case 'ArrowBackward':
+          inputStore.setState({ backward: false })
+          break;
+        case 'KeyD':
+        case 'ArrowRight':
+          inputStore.setState({ right: false })
+          break;
+      }
+    }
 }

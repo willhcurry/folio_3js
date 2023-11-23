@@ -22,11 +22,10 @@ export default class World {
         this.instantiated = true;
       }
     });
-
-    this.loop();
   }
 
   loop(deltaTime, elapsedTime) {
     this.physics.loop();
+    if(this.character) this.character.loop()
   }
 }
