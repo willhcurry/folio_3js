@@ -34,10 +34,16 @@ export default class Physics {
   add(mesh, type, collider) {
     // defining the rigid body type
     let rigidBodyType;
-    if (type === 'dynamic') {
-      rigidBodyType = this.rapier.RigidBodyDesc.dynamic();
-    } else if (type === 'fixed') {
-      rigidBodyType = this.rapier.RigidBodyDesc.fixed();
+    switch (type) {
+      case "dynamic":
+        rigidBodyType = this.rapier.RigidBodyDesc.dynamic();
+        break;
+      case "fixed":
+        rigidBodyType = this.rapier.RigidBodyDesc.fixed();
+        break;
+      case "kinematic":
+        rigidBodyType = this.rapier.RigidBodyDesc.kinematicPositionBased();
+        break;
     }
     this.rigidBody = this.world.createRigidBody(rigidBodyType);
 
@@ -75,6 +81,8 @@ export default class Physics {
     this.rigidBody.setRotation(worldRotation);
 
     this.meshmap.set(mesh, this.rigidBody);
+
+    return this.rigidBody;
   }
 
   /**
