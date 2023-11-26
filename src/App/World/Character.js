@@ -1,6 +1,7 @@
-import * as THREE from 'three';
-import App from '../App.js';
-import { inputStore } from '../Utils/Store.js';
+import * as THREE from "three";
+import App from "../App.js";
+
+import { inputStore } from "../Utils/Store.js";
 
 export default class Character {
   constructor() {
@@ -8,6 +9,7 @@ export default class Character {
     this.scene = this.app.scene;
     this.physics = this.app.world.physics;
 
+    // subscribe to input store
     inputStore.subscribe((state) => {
       this.forward = state.forward;
       this.backward = state.backward;
@@ -19,32 +21,47 @@ export default class Character {
   }
 
   instantiateCharacter() {
-    // const geometry = new THREE.BoxGeometry(2, 2, 2);
-    const geometry = new THREE.SphereGeometry(1, 32, 32);
-    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+    // create a character in threejs
+    const geometry = new THREE.BoxGeometry(2, 2, 2);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x00ff00,
+      wireframe: true,
+    });
     this.character = new THREE.Mesh(geometry, material);
     this.character.position.set(0, 2.5, 0);
     this.scene.add(this.character);
-    this.characterRigidBody = this.physics.add(this.character, "kinematic", "cuboid");
-    console.log(this.characterRigidBody)
+
+    // create a rigid body
+    this.rigidBodyType =
+      this.physics.rapier.RigidBodyDesc.kinematicPositionBased();
+    this.rigidBody = this.physics.world.createRigidBody(this.rigidBodyType);
+
+    // create a collider
+    this.colliderType = this.physics.rapier.ColliderDesc.cuboid(1, 1, 1);
+    this.collider = this.physics.world.createCollider(
+      this.colliderType,
+      this.rigidBody
+    );
+
+    // set rigid body position to character position
+    const worldPosition = this.character.getWorldPosition(new THREE.Vector3());
+    const worldRotation = this.character.getWorldQuaternion(
+      new THREE.Quaternion()
+    );
+    this.rigidBody.setTranslation(worldPosition);
+    this.rigidBody.setRotation(worldRotation);
   }
 
   loop() {
-    let { x, y, z } = this.characterRigidBody.translation();
 
     if (this.forward) {
-        z = z - 0.1;
     }
     if (this.backward) {
-        z = z + 0.1;
     }
     if (this.left) {
-        x = x - 0.1;
     }
     if (this.right) {
-        x = x + 0.1;
     }
 
-    this.characterRigidBody.setNextKinematicTranslation({x, y, z})
   }
 }
