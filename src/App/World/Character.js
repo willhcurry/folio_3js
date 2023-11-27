@@ -53,6 +53,10 @@ export default class Character {
 
     this.characterController =
       this.physics.world.createCharacterController(0.1);
+      this.characterController.setApplyImpulsesToDynamicBodies(true);
+      this.characterController.enableAutostep(3, 0.1, false);
+      this.characterController.enableSnapToGround(1);
+
   }
 
   loop(deltaTime) {
