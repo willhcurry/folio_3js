@@ -45,5 +45,21 @@ export default class Camera {
 
   loop() {
     this.controls.update();
+    this.character = this.app.world.character?.rigidBody;
+    if (this.character) {
+      const characterPosition = this.character.translation();
+      const characterRotation = this.character.rotation();
+
+      const cameraOffset = new THREE.Vector3(0, 30, 55);
+      cameraOffset.applyQuaternion(characterRotation);
+      cameraOffset.add(characterPosition);
+
+      const targetOffset = new THREE.Vector3(0, 10, 0);
+      targetOffset.applyQuaternion(characterRotation);
+      targetOffset.add(characterPosition);
+
+      this.instance.position.lerp(cameraOffset, 0.1);
+      this.controls.target.lerp(targetOffset, 0.1);
+    }
   }
 }
