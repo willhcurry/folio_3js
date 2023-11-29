@@ -15,18 +15,16 @@ export default class Camera {
 
     this.setInstance();
     this.setControls();
-    this.setResizeListener();
+    this.setResizeLister();
   }
 
   setInstance() {
-    // initialize the camera
     this.instance = new THREE.PerspectiveCamera(
       35,
       this.sizes.width / this.sizes.height,
-      0.1,
-      200
+      1,
+      600
     );
-
     this.instance.position.z = 100;
     this.instance.position.y = 20;
   }
@@ -36,7 +34,7 @@ export default class Camera {
     this.controls.enableDamping = true;
   }
 
-  setResizeListener() {
+  setResizeLister() {
     this.sizesStore.subscribe((sizes) => {
       this.instance.aspect = sizes.width / sizes.height;
       this.instance.updateProjectionMatrix();
@@ -45,10 +43,10 @@ export default class Camera {
 
   loop() {
     this.controls.update();
-    this.character = this.app.world.character?.rigidBody;
-    if (this.character) {
-      const characterPosition = this.character.translation();
-      const characterRotation = this.character.rotation();
+    this.characterController = this.app.world.characterController?.rigidBody;
+    if (this.characterController) {
+      const characterPosition = this.characterController.translation();
+      const characterRotation = this.characterController.rotation();
 
       const cameraOffset = new THREE.Vector3(0, 30, 55);
       cameraOffset.applyQuaternion(characterRotation);
