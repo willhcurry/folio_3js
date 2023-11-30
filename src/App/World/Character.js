@@ -9,6 +9,10 @@ export default class Character {
     this.assetStore = assetStore.getState();
     this.avatar = this.assetStore.loadedAssets.avatar;
 
+    this.instantiateCharacter();
+  }
+
+  instantiateCharacter() {
     // create character and add to scene
     const geometry = new THREE.BoxGeometry(2, 5, 2);
     const material = new THREE.MeshStandardMaterial({
@@ -20,6 +24,7 @@ export default class Character {
     this.instance.position.set(0, 4, 0);
     this.scene.add(this.instance);
 
+    // add avatar to character
     const avatar = this.avatar.scene;
     avatar.rotation.y = Math.PI;
     avatar.position.y = -2.5;
