@@ -39,7 +39,7 @@ export default class CharacterController {
     this.rigidBody = this.physics.world.createRigidBody(this.rigidBodyType);
 
     // Create a cuboid collider
-    this.colliderType = this.physics.rapier.ColliderDesc.cuboid(1, 1, 1);
+    this.colliderType = this.physics.rapier.ColliderDesc.cuboid(1, 2.5, 1);
     this.collider = this.physics.world.createCollider(
       this.colliderType,
       this.rigidBody
@@ -80,6 +80,15 @@ export default class CharacterController {
       movement.x += 1;
     }
 
+    if (movement.length() !== 0) {
+      const angle = Math.atan2(movement.x, movement.z) + Math.PI;
+      const characterRotation = new THREE.Quaternion().setFromAxisAngle(
+        new THREE.Vector3(0, 1, 0),
+        angle
+      );
+      this.character.quaternion.slerp(characterRotation, 0.1);
+    }
+
     // Normalize and scale movement vector and set y component to -1
     movement.normalize().multiplyScalar(0.3);
     movement.y = -1;
@@ -92,6 +101,6 @@ export default class CharacterController {
 
     // Set next kinematic translation of rigid body and update character position
     this.rigidBody.setNextKinematicTranslation(newPosition);
-    this.character.position.copy(this.rigidBody.translation());
+    this.character.position.copy(this.rigidBody.translation(), 0.2);
   }
 }

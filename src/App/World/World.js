@@ -16,11 +16,12 @@ export default class World {
     this.physics = new Physics();
 
     // create world classes
-    appStateStore.subscribe((state) => {
-      if (state.physicsReady) {
+    const unsub = appStateStore.subscribe((state) => {
+      if (state.physicsReady && state.assetsReady) {
         this.environment = new Environment();
         this.character = new Character();
         this.characterController = new CharacterController();
+        unsub();
       }
     });
 
