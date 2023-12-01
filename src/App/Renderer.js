@@ -12,7 +12,7 @@ export default class Renderer {
     this.sizes = this.sizesStore.getState();
 
     this.setInstance();
-    this.setResizeListener();
+    this.setResizeLister();
   }
 
   setInstance() {
@@ -27,12 +27,13 @@ export default class Renderer {
     this.instance.shadowMap.type = THREE.PCFSoftShadowMap;
 
     this.instance.toneMapping = THREE.ACESFilmicToneMapping;
+    this.instance.toneMappingExposure = 0.8;
   }
 
-  setResizeListener() {
-    this.sizesStore.subscribe(() => {
-      this.instance.setSize(this.sizes.width, this.sizes.height);
-      this.instance.setPixelRatio(this.sizes.pixelRatio);
+  setResizeLister() {
+    this.sizesStore.subscribe((sizes) => {
+      this.instance.setSize(sizes.width, sizes.height);
+      this.instance.setPixelRatio(sizes.pixelRatio);
     });
   }
 

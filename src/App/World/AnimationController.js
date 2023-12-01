@@ -8,6 +8,7 @@ export default class AnimationController {
     this.app = new App();
     this.scene = this.app.scene;
     this.avatar = this.app.world.character.avatar;
+
     inputStore.subscribe((input) => this.onInput(input));
 
     this.instantiatedAnimations();

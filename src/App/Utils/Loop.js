@@ -19,7 +19,7 @@ export default class Loop {
     this.previousElapsedTime = elapsedTime;
 
     this.world.loop(deltaTime, elapsedTime);
-    this.camera.loop();
+    this.camera.loop(deltaTime);
     this.renderer.loop();
     window.requestAnimationFrame(() => this.loop());
   }
