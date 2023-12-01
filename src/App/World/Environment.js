@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import App from '../App.js';
 import assetStore from '../Utils/AssetStore.js';
+import Portal from './Portal.js';
+import ModalContentProvider from '../UI/ModalContentProvider.js';
 
 export default class Environment {
   constructor() {
@@ -14,6 +16,7 @@ export default class Environment {
 
     this.loadEnvironment();
     this.addLights();
+    this.addPortals();
   }
 
   loadEnvironment() {
@@ -21,75 +24,46 @@ export default class Environment {
     const environmentScene = this.environment.scene;
     this.scene.add(environmentScene);
 
-    // environmentScene.traverse((obj) => {
-    //   if (obj.isMesh) {
-    //     this.physics.add(obj, 'fixed', 'cuboid');
-    //   }
-    // });
-
-    environmentScene.position.set(-4.8, 0, -7.4)
-    environmentScene.rotation.set(0, -.60, 0)
-    environmentScene.scale.setScalar(1.3)
+    environmentScene.position.set(-4.8, 0, -7.4);
+    environmentScene.rotation.set(0, -0.6, 0);
+    environmentScene.scale.setScalar(1.3);
 
     const physicalObjects = [
-      'trees', 
+      'trees',
       'terrain',
       'rocks',
       'stairs',
       'gates',
       'floor',
-      'bushes'
+      'bushes',
     ];
 
     const shadowCasters = [
-      'trees', 
+      'trees',
       'terrain',
       'rocks',
       'stairs',
       'gates',
-      'bushes'
+      'bushes',
     ];
 
-    const shadowReceivers = [
-      'floor', 
-      'terrain'
-    ];
+    const shadowReceivers = ['floor', 'terrain'];
 
-    // loop through the top loevel of the environment scene
     for (const child of environmentScene.children) {
-
-    // check if the name of the object includes any of the strings in the physicalObject
-    const isPhysicalObject = physicalObjects.some((keyword) => child.name.includes(keyword))
-    if (isPhysicalObject) {
-      // if it does, traverse the object and add all the meshes to the physical world
       child.traverse((obj) => {
         if (obj.isMesh) {
-          this.physics.add(obj, 'fixed', 'cuboid')
+          obj.castShadow = shadowCasters.some((keyword) =>
+            child.name.includes(keyword)
+          );
+          obj.receiveShadow = shadowReceivers.some((keyword) =>
+            child.name.includes(keyword)
+          );
+          if (physicalObjects.some((keyword) => child.name.includes(keyword))) {
+            this.physics.add(obj, 'fixed', 'cuboid');
+          }
         }
-      })
+      });
     }
-
-    const isShadowCaster = shadowCasters.some((keyword) => child.name.includes(keyword))
-    if (isShadowCaster) {
-      // if it does, traverse the object and add all the meshes to the physical world
-      child.traverse((obj) => {
-        if (obj.isMesh) {
-          obj.castShadow = true;
-        }
-      })
-    }
-
-    const isShadowReceiver = shadowReceivers.some((keyword) => child.name.includes(keyword))
-    if (isShadowReceiver) {
-      // if it does, traverse the object and add all the meshes to the physical world
-      child.traverse((obj) => {
-        if (obj.isMesh) {
-          obj.receiveShadow = true;
-        }
-      })
-    }
-    }
-    
   }
 
   addLights() {
@@ -104,7 +78,28 @@ export default class Environment {
     this.directionalLight.shadow.camera.left = -30;
     this.directionalLight.shadow.camera.bottom = -30;
     this.directionalLight.shadow.bias = -0.002;
-    this.directionalLight.shadow.normalBias = -0.07;
+    this.directionalLight.shadow.normalBias = 0.072;
     this.scene.add(this.directionalLight);
+  }
+
+  addPortals() {
+    const portalMesh1 = this.environment.scene.getObjectByName('portals');
+    const portalMesh2 = this.environment.scene.getObjectByName('portals001');
+    const portalMesh3 = this.environment.scene.getObjectByName('portals002');
+
+    const modalContentProvider = new ModalContentProvider();
+
+    this.portal1 = new Portal(
+      portalMesh1,
+      modalContentProvider.getModalInfo('aboutMe')
+    );
+    this.portal2 = new Portal(
+      portalMesh2,
+      modalContentProvider.getModalInfo('projects')
+    );
+    this.portal3 = new Portal(
+      portalMesh3,
+      modalContentProvider.getModalInfo('contactMe')
+    );
   }
 }

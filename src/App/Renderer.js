@@ -27,7 +27,6 @@ export default class Renderer {
     this.instance.shadowMap.type = THREE.PCFSoftShadowMap;
 
     this.instance.toneMapping = THREE.ACESFilmicToneMapping;
-
   }
 
   setResizeListener() {
