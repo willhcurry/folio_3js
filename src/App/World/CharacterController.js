@@ -57,7 +57,7 @@ export default class CharacterController {
     this.characterController =
       this.physics.world.createCharacterController(0.01);
     this.characterController.setApplyImpulsesToDynamicBodies(true);
-    this.characterController.enableAutostep(5, 0.1, false);
+    this.characterController.enableAutostep(1, 0.1, false);
     this.characterController.enableSnapToGround(1);
   }
 

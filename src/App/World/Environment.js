@@ -49,11 +49,39 @@ export default class Environment {
     environmentScene.rotation.set(0, -0.6, 0);
     environmentScene.scale.setScalar(1.3);
 
-    environmentScene.traverse((obj) => {
-      if (obj.isMesh) {
-        this.physics.add(obj, 'fixed', 'cuboid');
-      }
-    });
+    // environmentScene.traverse((obj) => {
+    //   if (obj.isMesh) {
+    //     this.physics.add(obj, 'fixed', 'cuboid');
+    //   }
+    // });
+
+    const physicalObjects = [
+      'trees', 
+      'terrain',
+      'rocks',
+      'stairs',
+      'gates',
+      'floor',
+      'bushes'
+    ]
+
+    // loop through the top loevel of the environment scene
+    for (const child of environmentScene.children) {
+
+    
+
+    // check if the name of the object includes any of the strings in the physicalObject
+    const ifPhysicalObject = physicalObjects.some((keyword) => child.name.includes(keyword))
+    if (ifPhysicalObject) {
+      // if it does, traverse the object and add all the meshes to the physical world
+      child.traverse((obj) => {
+        if (obj.isMesh) {
+          this.physics.add(obj, 'fixed', 'cuboid')
+        }
+      })
+    }
+    }
+    
   }
 
   addLights() {
