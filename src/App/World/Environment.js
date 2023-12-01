@@ -21,39 +21,15 @@ export default class Environment {
     const environmentScene = this.environment.scene;
     this.scene.add(environmentScene);
 
-    this.pane.addInput(environmentScene, 'position', {
-      min: -100,
-      max: 100,
-      step: 0.1,
-    });
-
-    this.pane.addInput(environmentScene, 'rotation', {
-      min: -Math.PI,
-      max: Math.PI,
-      step: 0.1,
-    });
-
-    const scale = { value: 1 };
-
-    this.pane
-      .addInput(scale, 'value', {
-        min: 0,
-        max: 3,
-        step: 0.01,
-      })
-      .on('change', () => {
-        environmentScene.scale.setScalar(scale.value);
-      });
-
-    environmentScene.position.set(-4.8, 0, -7.4);
-    environmentScene.rotation.set(0, -0.6, 0);
-    environmentScene.scale.setScalar(1.3);
-
     // environmentScene.traverse((obj) => {
     //   if (obj.isMesh) {
     //     this.physics.add(obj, 'fixed', 'cuboid');
     //   }
     // });
+
+    environmentScene.position.set(-4.8, 0, -7.4)
+    environmentScene.rotation.set(0, -.60, 0)
+    environmentScene.scale.setScalar(1.3)
 
     const physicalObjects = [
       'trees', 
@@ -63,20 +39,52 @@ export default class Environment {
       'gates',
       'floor',
       'bushes'
-    ]
+    ];
+
+    const shadowCasters = [
+      'trees', 
+      'terrain',
+      'rocks',
+      'stairs',
+      'gates',
+      'bushes'
+    ];
+
+    const shadowReceivers = [
+      'floor', 
+      'terrain'
+    ];
 
     // loop through the top loevel of the environment scene
     for (const child of environmentScene.children) {
 
-    
-
     // check if the name of the object includes any of the strings in the physicalObject
-    const ifPhysicalObject = physicalObjects.some((keyword) => child.name.includes(keyword))
-    if (ifPhysicalObject) {
+    const isPhysicalObject = physicalObjects.some((keyword) => child.name.includes(keyword))
+    if (isPhysicalObject) {
       // if it does, traverse the object and add all the meshes to the physical world
       child.traverse((obj) => {
         if (obj.isMesh) {
           this.physics.add(obj, 'fixed', 'cuboid')
+        }
+      })
+    }
+
+    const isShadowCaster = shadowCasters.some((keyword) => child.name.includes(keyword))
+    if (isShadowCaster) {
+      // if it does, traverse the object and add all the meshes to the physical world
+      child.traverse((obj) => {
+        if (obj.isMesh) {
+          obj.castShadow = true;
+        }
+      })
+    }
+
+    const isShadowReceiver = shadowReceivers.some((keyword) => child.name.includes(keyword))
+    if (isShadowReceiver) {
+      // if it does, traverse the object and add all the meshes to the physical world
+      child.traverse((obj) => {
+        if (obj.isMesh) {
+          obj.receiveShadow = true;
         }
       })
     }
@@ -91,6 +99,12 @@ export default class Environment {
     this.directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     this.directionalLight.position.set(1, 1, 1);
     this.directionalLight.castShadow = true;
+    this.directionalLight.shadow.camera.top = 30;
+    this.directionalLight.shadow.camera.right = 30;
+    this.directionalLight.shadow.camera.left = -30;
+    this.directionalLight.shadow.camera.bottom = -30;
+    this.directionalLight.shadow.bias = -0.002;
+    this.directionalLight.shadow.normalBias = -0.07;
     this.scene.add(this.directionalLight);
   }
 }
