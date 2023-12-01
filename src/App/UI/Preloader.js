@@ -6,8 +6,6 @@ export default class Preloader {
     this.assetStore = assetStore;
 
     this.assetStore.subscribe((state) => {
-      console.log(state.loadedAssets);
-
       // access to DOM elements
       this.overlay = document.querySelector('.overlay');
       this.loading = document.querySelector('.loading');

@@ -23,11 +23,11 @@ export default class AnimationController {
     });
 
     this.currentAction = this.animations.get('Idle');
-    this.currentAction.play()
+    this.currentAction.play();
   }
 
   playAnimation(name) {
-    if(this.currentAction === this.animations.get(name)) return;
+    if (this.currentAction === this.animations.get(name)) return;
     const action = this.animations.get(name);
     action.reset();
     action.play();
@@ -38,9 +38,9 @@ export default class AnimationController {
 
   onInput(input) {
     if (input.forward || input.backward || input.left || input.right) {
-        this.playAnimation('Run');
+      this.playAnimation('Run');
     } else {
-        this.playAnimation('Idle');
+      this.playAnimation('Idle');
     }
   }
 

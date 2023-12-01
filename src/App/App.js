@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import Camera from './Camera.js';
 import Renderer from './Renderer.js';
 import Loop from './Utils/Loop.js';
+import GUI from './Utils/GUI.js';
 import World from './World/World.js';
 import Resize from './Utils/Resize.js';
 import AssetLoader from './Utils/AssetLoader.js';
@@ -18,6 +19,9 @@ export default class App {
     // threejs elements
     this.canvas = document.querySelector('canvas.threejs');
     this.scene = new THREE.Scene();
+
+    // add debug GUI
+    this.gui = new GUI();
 
     // Asset Loader
     this.assetLoader = new AssetLoader();
