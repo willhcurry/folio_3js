@@ -1,5 +1,4 @@
-import 'style.css';
-import 'assets/fonts/helvetiker_regular.typeface.json';
-import 'assets/models/scene.gltf';
+import './style.css'
+import App from './App/App.js'
 
-const app = new App();
+const app = new App()
