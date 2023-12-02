@@ -8,6 +8,7 @@ import Resize from './Utils/Resize.js'
 import AssetLoader from './Utils/AssetLoader.js'
 import Preloader from './UI/Preloader.js'
 import InputController from './UI/InputController.js'
+import ModalManager from './UI/ModalManager.js'
 
 let instance = null
 
