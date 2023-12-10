@@ -24,7 +24,7 @@ export default class AnimationController {
             this.animations.set(clip.name, this.mixer.clipAction(clip))
         })
 
-        this.currentAction = this.animations.get('idle')
+        this.currentAction = this.animations.get('Idle')
         this.currentAction.play()
     }
 
@@ -45,9 +45,9 @@ export default class AnimationController {
             input.left ||
             input.right
         ) {
-            this.playAnimation('run')
+            this.playAnimation('Run')
         } else {
-            this.playAnimation('idle')
+            this.playAnimation('Idle')
 
         }
     }
