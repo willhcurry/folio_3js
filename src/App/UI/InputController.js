@@ -1,4 +1,4 @@
-import { inputStore } from "../Utils/Store";
+import { inputStore } from "../Utils/Store.js";
 
 export default class InputController {
   constructor() {

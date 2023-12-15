@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 import App from '../App';
-import { inputStore } from '../Utils/Store';
+import { inputStore } from '../Utils/Store.js';
 
 export default class AnimationController {
     constructor() {
