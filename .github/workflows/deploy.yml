@@ -2,8 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ] # or your default branch
+    branches: [ main ] # or 'master' if that's your default branch
   workflow_dispatch:
+
+permissions:
+  contents: write # This line is important!
 
 jobs:
   build-and-deploy:
@@ -28,3 +31,4 @@ jobs:
         with:
           folder: dist
           branch: gh-pages
+          clean: true
