@@ -1,35 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+    <title>William H Curry Portfolio</title>
+    
+    <script type="module" crossorigin src="/folio_3js/assets/index-970992eb.js"></script>
+    <link rel="modulepreload" crossorigin href="/folio_3js/assets/three-b24eb87d.js">
+    <link rel="stylesheet" href="/folio_3js/assets/index-7c61d36e.css">
+  </head>
 
-	<meta charset="utf-8">
-	<title>Threejs Portfolio</title>
-	
-  <script type="module" crossorigin src="/folio_3js/assets/index-682c9467.js"></script>
-  <link rel="stylesheet" href="/folio_3js/assets/index-7c61d36e.css">
-</head>
+  <body>
+    <canvas class="threejs"></canvas>
+    
+    <div class="overlay"></div>
+    <h1 class="loading">
+      Loading Experience... <span id="progressPercentage"></span>%
+    </h1>
+    <button class="start">START</button>
 
-<body>
-	<canvas class="threejs"></canvas>
-	
-	<div class="overlay"></div>
-	<h1 class="loading">Loading Experience... <span id="progressPercentage"></span>%</h1>
-	<button class="start">START</button>
-
-	<div id="myModal" class="modal">
-		<div class="modal-wrapper">
-			<div class="modal-content">
-				<h1 id="modalTitle">Modal Title</h1>
-				<p id="modalDescription">Modal Description</p>
-			</div>
-			<span class="close">Close</span>
-		</div>
-	</div>
-
-</body>
-
+    <div id="myModal" class="modal">
+      <div class="modal-wrapper">
+        <div class="modal-content">
+          <h1 id="modalTitle">Modal Title</h1>
+          <p id="modalDescription">Modal Description</p>
+        </div>
+        <span class="close">Close</span>
+      </div>
+    </div>
+  </body>
 </html>
