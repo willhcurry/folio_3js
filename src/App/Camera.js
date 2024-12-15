@@ -23,17 +23,15 @@ export default class Camera{
         this.instance = new THREE.PerspectiveCamera(
             35,
             this.sizes.width / this.sizes.height,
-            1,
-            600
-          );
-          this.instance.position.z = 100
-        this.instance.position.y = 20
+            0.1,
+            1000
+        );
+        this.instance.position.set(0, 20, 100);
     }
 
     setControls() {
         this.controls = new OrbitControls(this.instance, this.canvas);
         this.controls.enableDamping = true;
-
     }
 
     setResizeLister() {
@@ -47,16 +45,14 @@ export default class Camera{
         this.controls.update()
         this.characterController = this.app.world.characterController?.rigidBody
         if(this.characterController) {
-
-
             const characterPosition = this.characterController.translation()
             const characterRotation = this.characterController.rotation()
 
-            const cameraOffset = new THREE.Vector3(0, 28, 35)
+            const cameraOffset = new THREE.Vector3(0, 20, 25)  // Further reduced from (0, 22, 28)
             cameraOffset.applyQuaternion(characterRotation)
             cameraOffset.add(characterPosition)
 
-            const targetOffset = new THREE.Vector3(0, 8, 0)
+            const targetOffset = new THREE.Vector3(0, 5, 0)  // Slightly lowered from 6
             targetOffset.applyQuaternion(characterRotation)
             targetOffset.add(characterPosition)
 

@@ -8,10 +8,11 @@ import Resize from './Utils/Resize.js'
 import AssetLoader from './Utils/AssetLoader.js'
 import Preloader from './UI/Preloader.js'
 import InputController from './UI/InputController.js'
+import ModalManager from './UI/ModalManager.js'
 
 let instance = null
 
-export default class App{
+export default class App {
     constructor() {
         if(instance) return instance
         instance = this
@@ -29,6 +30,7 @@ export default class App{
         // UI
         this.preloader = new Preloader()
         this.inputController = new InputController()
+        this.modalManager = new ModalManager()  // Add this line
 
         // World
         this.world = new World()
