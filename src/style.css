@@ -185,3 +185,50 @@ body {
 .permanent-controls p {
     margin: 5px 0;
 }
+
+.mobile-controls {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    display: none;  /* Hidden by default, shown only on touch devices */
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+.mobile-controls-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mobile-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-btn:active {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Show mobile controls only on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .mobile-controls {
+        display: flex;
+    }
+    
+    .permanent-controls {
+        bottom: 180px;  /* Move up to make room for mobile controls */
+    }
+}
