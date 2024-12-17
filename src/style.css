@@ -225,8 +225,52 @@ body {
 /* Show mobile controls only on touch devices */
 @media (hover: none) and (pointer: coarse) {
     .mobile-controls {
-        display: flex;
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    display: none;
+    z-index: 100;
+}
+
+.dpad {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.dpad-center {
+    width: 100%;
+    height: 100%;
+}
+
+.dpad svg {
+    width: 100%;
+    height: 100%;
+}
+
+.dpad-base {
+    fill: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.dpad-arrow {
+    fill: rgba(255, 255, 255, 0.4);
+    transition: fill 0.2s;
+}
+
+.dpad-arrow.active {
+    fill: rgba(255, 255, 255, 0.8);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .mobile-controls {
+        display: block;
     }
+    
+    .permanent-controls {
+        bottom: 280px;
+    }
+}
     
     .permanent-controls {
         bottom: 180px;  /* Move up to make room for mobile controls */
