@@ -48,13 +48,16 @@ export default class CharacterController {
         if (this.right) movement.x += 1;
 
         if (movement.length() !== 0) {
-            const angle = Math.atan2(movement.x, movement.z) + Math.PI;
-            const characterRotation = new THREE.Quaternion().setFromAxisAngle(
-                new THREE.Vector3(0, 1, 0),
-                angle
-            );
-            this.character.quaternion.slerp(characterRotation, 0.1);
-        }
+        const angle = Math.atan2(movement.x, movement.z);
+        const characterRotation = new THREE.Quaternion().setFromAxisAngle(
+            new THREE.Vector3(0, 1, 0),
+            angle + Math.PI
+        );
+        
+        // Adjust lerp speed for diagonal movement
+        const lerpSpeed = inputStore.getState().diagonal ? 0.2 : 0.1;
+        this.character.quaternion.slerp(characterRotation, lerpSpeed);
+    }
 
         movement.normalize().multiplyScalar(0.18);
         movement.y = -1;
