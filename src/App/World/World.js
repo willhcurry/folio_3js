@@ -87,10 +87,10 @@ export default class World {
                         "<div class='tech-stack'>LLM Integration • AI Tools • Shopify Development</div>" +
                         "</div>" +
                         "<div class='project-card'>" +
-                        "<h3>Loan Assessment System</h3>" +
-                        "<p>Built critical components for credit assessment tool processing 500+ daily evaluations. " +
-                        "Implemented responsive UI with comprehensive testing protocols.</p>" +
-                        "<div class='tech-stack'>React • GraphQL • Tailwind CSS</div>" +
+                        "<h3>Final Memory</h3>" +
+                        "<p>Developed a responsive Final Fantasy themed memory card game using React in a 4-day timeframe, implementing modular architecture. " +
+                        "Built custom card-flipping animations using React hooks and CSS transitions, achieving smooth cross-device performance.</p>" +
+                        "<div class='tech-stack'>React</div>" +
                         "</div>",
                     color: 0xff0000
                 }
