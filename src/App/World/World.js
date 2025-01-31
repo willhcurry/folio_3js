@@ -25,7 +25,7 @@ export default class World {
                     "description": 
                         "<div class='intro'>" +
                         "<h2>Hi, I'm William Curry</h2>" +
-                        "<p>Full-stack developer specializing in React and modern JavaScript, with expertise in AI/LLM integration. " +
+                        "<p>Full-stack developer specializing in React and modern JavaScript, with experience in AI/LLM integration. " +
                         "I combine technical precision with innovative problem-solving to build efficient, scalable applications.</p>" +
                         "<p>My development approach leverages cutting-edge tools and techniques – from AI-assisted workflows to " +
                         "modern frontend frameworks. This interactive portfolio, built with Three.js, demonstrates my passion for " +
@@ -34,6 +34,14 @@ export default class World {
                         "problem-solving under pressure, qualities that translate perfectly to handling complex technical challenges " +
                         "in fast-paced development environments.</p>" +
                         "<p>Navigate through the portals above to explore my professional journey and projects!</p>" +
+                        "<div class='contact-info'>" +
+                        "<p>Let's Connect:</p>" +
+                        "<ul>" +
+                        "<li>Email: <a href='mailto:willhcurry@gmail.com'>willhcurry@gmail.com</a></li>" +
+                        "<li>GitHub: <a href='https://github.com/willhcurry' target='_blank'>github.com/willhcurry</a></li>" +
+                        "<li>LinkedIn: <a href='https://www.linkedin.com/in/willhcurry/' target='_blank'>linkedin.com/in/willhcurry</a></li>" +
+                        "</ul>" +
+                        "</div>" +
                         "</div>",
                     color: 0x00ff00
                 }
