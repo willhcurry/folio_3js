@@ -76,32 +76,40 @@ export default class World {
             },
             {
                 position: new THREE.Vector3(8.48, 12.17 - 8.72, -21.25 - 0.54),
-                data: {
-                    title: "Featured Projects",
-                    description: 
-                        "<div class='projects-grid'>" +
-                        "<div class='project-card'>" +
-                        "<h3>EPUB to RAG Markdown Converter (Chatbot WIP)</h3>" +
-                        "<p>Developing a Python tool to convert EPUB files into RAG-optimized markdown, with plans to evolve into a full-featured AI chatbot. Currently implements batch processing, " +
-                        "preserves book structure, and generates chunked JSON for future semantic search and question-answering capabilities.</p>" +
-                        "<div class='tech-stack'>Python • EbookLib • BeautifulSoup • RAG Preprocessing</div>" +
-                        "<a href='https://github.com/willhcurry/book_to_markdown_converter' target='_blank' class='github-link'>View on GitHub</a>" +
-                        "</div>" +
-                        "<div class='project-card'>" +
-                        "<h3>Interactive 3D Portfolio</h3>" +
-                        "<p>Engineered an immersive showcase utilizing Three.js and Rapier physics engine. Features custom " +
-                        "character controller, dynamic lighting, and interactive information portals, demonstrating advanced " +
-                        "JavaScript and 3D web technologies.</p>" +
-                        "<div class='tech-stack'>Three.js • Rapier Physics • Advanced JavaScript</div>" +
-                        "</div>" +
-                        "<div class='project-card'>" +
-                        "<h3>AI-Integrated E-commerce Platform</h3>" +
-                        "<p>Developed custom e-commerce solution utilizing advanced LLM prompt engineering and AI image " +
-                        "generation (Midjourney, Leonardo.ai). Implemented comprehensive product design workflow with " +
-                        "Adobe Creative Suite integration.</p>" +
-                        "<div class='tech-stack'>LLM Integration • AI Tools • Shopify Development</div>" +
-                        "</div>",
-                    color: 0xff0000
+        data: {
+            title: "Featured Projects",
+            description: 
+                "<div class='projects-grid'>" +
+                "<div class='project-card'>" +
+                "<h3>EPUB to RAG Markdown Converter</h3>" +
+                "<p>Imagine turning your favorite books into an AI-powered knowledge base! I'm crafting a Python tool that transforms EPUB files into a semantic search playground. It's like giving your books superpowers – breaking them down into digestible chunks ready for semantic search and question-answering.</p>" +
+                "<div class='tech-stack'>Python • EbookLib • BeautifulSoup • RAG Preprocessing</div>" +
+                "<a href='https://github.com/willhcurry/book_to_markdown_converter' target='_blank' class='github-link'>View on GitHub</a>" +
+                "</div>" +
+                "<div class='project-card'>" +
+                "<h3>Interactive 3D Portfolio</h3>" +
+                "<p>Welcome to my digital playground! This isn't just a portfolio – it's an immersive 3D world that brings my professional journey to life. I've created a custom digital landscape where you can literally walk through my professional story, complete with physics-based interactions that make exploring my work feel like an adventure.</p>" +
+                "<ul>" +
+                "<li>Crafted a dynamic character controller that lets you navigate through my professional world</li>" +
+                "<li>Built a modular architecture with smart state management and an event-driven portal system</li>" +
+                "<li>Optimized 3D rendering with a custom animation system and efficient asset loading</li>" +
+                "</ul>" +
+                "<div class='tech-stack'>Three.js • Rapier Physics • Advanced JavaScript</div>" +
+                "</div>" +
+                "<a href='https://discover-videos-lovat.vercel.app' target='_blank' class='project-link'>Live Demo</a>" +
+                "<div class='project-card'>" +
+                "<h3>Netflix Clone Video Platform</h3>" +
+                "<p>Dive into a streaming experience that's more than just another video platform! I've crafted a Netflix-inspired app that brings together cutting-edge tech and smooth user experience. It's like building your own collection of favorited YouTube videos without, umm, YouTube. </p>" +
+                "<ul>" +
+                "<li>Engineered a rock-solid authentication system that keeps user data safe and sound</li>" +
+                "<li>Created dynamic, Netflix-style routing that makes browsing feel intuitive and fun</li>" +
+                "<li>Implemented smart state management that makes the app feel seamless and responsive</li>" +
+                "</ul>" +
+                "<div class='tech-stack'>Next.js • Hasura GraphQL • JWT • Magic SDK</div>" +
+                "<a href='https://discover-videos-lovat.vercel.app' target='_blank' class='project-link'>Live Demo</a>" +
+                "</div>" +
+                "</div>",
+            color: 0xff0000
                     }
             }
         ];
