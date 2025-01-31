@@ -1,6 +1,9 @@
+willhcurry.github.io/folio_3js/
+
 Interactive 3D Portfolio
 Overview
 This is an immersive, interactive 3D portfolio showcasing my professional journey, projects, and background. Built using Three.js and Rapier physics engine, the portfolio allows users to navigate a 3D environment and explore interactive information portals.
+
 Features
 
 3D Character Navigation: Move through a custom-designed 3D environment
@@ -24,7 +27,7 @@ npm or yarn
 Installation
 
 Clone the repository:
-bashCopygit clone https://github.com/yourusername/threejs-portfolio.git
+bashCopygit clone https://github.com/willhcurry/folio_3js.git
 cd threejs-portfolio
 
 Install dependencies:
@@ -77,12 +80,11 @@ Additional interactive elements
 Enhanced performance optimizations
 
 License
-[Specify your license, e.g., MIT]
+MIT
 Contact
 William Curry
 
 GitHub: @willhcurry
-[Your preferred contact method]
 
 Acknowledgments
 
