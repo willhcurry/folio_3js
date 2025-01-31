@@ -73,6 +73,13 @@ export default class World {
                     description: 
                         "<div class='projects-grid'>" +
                         "<div class='project-card'>" +
+                        "<h3>EPUB to RAG Markdown Converter (Chatbot WIP)</h3>" +
+                        "<p>Developing a Python tool to convert EPUB files into RAG-optimized markdown, with plans to evolve into a full-featured AI chatbot. Currently implements batch processing, " +
+                        "preserves book structure, and generates chunked JSON for future semantic search and question-answering capabilities.</p>" +
+                        "<div class='tech-stack'>Python • EbookLib • BeautifulSoup • RAG Preprocessing</div>" +
+                        "<a href='https://github.com/willhcurry/book_to_markdown_converter' target='_blank' class='github-link'>View on GitHub</a>" +
+                        "</div>" +
+                        "<div class='project-card'>" +
                         "<h3>Interactive 3D Portfolio</h3>" +
                         "<p>Engineered an immersive showcase utilizing Three.js and Rapier physics engine. Features custom " +
                         "character controller, dynamic lighting, and interactive information portals, demonstrating advanced " +
@@ -85,15 +92,9 @@ export default class World {
                         "generation (Midjourney, Leonardo.ai). Implemented comprehensive product design workflow with " +
                         "Adobe Creative Suite integration.</p>" +
                         "<div class='tech-stack'>LLM Integration • AI Tools • Shopify Development</div>" +
-                        "</div>" +
-                        "<div class='project-card'>" +
-                        "<h3>Final Memory</h3>" +
-                        "<p>Developed a responsive Final Fantasy themed memory card game using React in a 4-day timeframe, implementing modular architecture. " +
-                        "Built custom card-flipping animations using React hooks and CSS transitions, achieving smooth cross-device performance.</p>" +
-                        "<div class='tech-stack'>React</div>" +
                         "</div>",
                     color: 0xff0000
-                }
+                    }
             }
         ];
 
