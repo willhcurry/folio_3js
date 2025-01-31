@@ -89,22 +89,11 @@ export default class World {
                 "<div class='project-card'>" +
                 "<h3>Interactive 3D Portfolio</h3>" +
                 "<p>Welcome to my digital playground! This isn't just a portfolio – it's an immersive 3D world that brings my professional journey to life. I've created a custom digital landscape where you can literally walk through my professional story, complete with physics-based interactions that make exploring my work feel like an adventure.</p>" +
-                "<ul>" +
-                "<li>Crafted a dynamic character controller that lets you navigate through my professional world</li>" +
-                "<li>Built a modular architecture with smart state management and an event-driven portal system</li>" +
-                "<li>Optimized 3D rendering with a custom animation system and efficient asset loading</li>" +
-                "</ul>" +
                 "<div class='tech-stack'>Three.js • Rapier Physics • Advanced JavaScript</div>" +
                 "</div>" +
-                "<a href='https://discover-videos-lovat.vercel.app' target='_blank' class='project-link'>Live Demo</a>" +
                 "<div class='project-card'>" +
                 "<h3>Netflix Clone Video Platform</h3>" +
-                "<p>Dive into a streaming experience that's more than just another video platform! I've crafted a Netflix-inspired app that brings together cutting-edge tech and smooth user experience. It's like building your own collection of favorited YouTube videos without, umm, YouTube. </p>" +
-                "<ul>" +
-                "<li>Engineered a rock-solid authentication system that keeps user data safe and sound</li>" +
-                "<li>Created dynamic, Netflix-style routing that makes browsing feel intuitive and fun</li>" +
-                "<li>Implemented smart state management that makes the app feel seamless and responsive</li>" +
-                "</ul>" +
+                "<p>Dive into a streaming experience that's more than just another video platform! I've crafted a Netflix-inspired app that brings together cutting-edge tech and smooth user experience. The app features a rock-solid authentication system, dynamic Netflix-style routing, and smart state management that makes browsing feel intuitive and responsive.</p>" +
                 "<div class='tech-stack'>Next.js • Hasura GraphQL • JWT • Magic SDK</div>" +
                 "<a href='https://discover-videos-lovat.vercel.app' target='_blank' class='project-link'>Live Demo</a>" +
                 "</div>" +
