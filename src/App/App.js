@@ -9,6 +9,7 @@ import AssetLoader from './Utils/AssetLoader.js'
 import Preloader from './UI/Preloader.js'
 import InputController from './UI/InputController.js'
 import ModalManager from './UI/ModalManager.js'
+import ModalContentProvider from './UI/ModalContentProvider.js'
 
 let instance = null
 
@@ -28,9 +29,10 @@ export default class App {
         this.assetLoader = new AssetLoader()
 
         // UI
+        this.modalContentProvider = new ModalContentProvider()
         this.preloader = new Preloader()
         this.inputController = new InputController()
-        this.modalManager = new ModalManager()  // Add this line
+        this.modalManager = new ModalManager()
 
         // World
         this.world = new World()
